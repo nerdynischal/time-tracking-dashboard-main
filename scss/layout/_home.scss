@@ -1,1 +1,6 @@
 @use "../utilities" as u;
+
+body {
+  padding: u.rem(64) u.rem(20);
+  background: var(--navy-950);
+}

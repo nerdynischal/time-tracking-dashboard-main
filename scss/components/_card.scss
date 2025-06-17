@@ -1,0 +1,128 @@
+@use "../utilities" as u;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: u.rem(28) 0;
+  gap: u.rem(8);
+  background: var(--navy-900);
+  color: #ebebeb;
+  padding: u.rem(24);
+  border-radius: u.rem(12);
+  position: relative;
+
+  &.user {
+    background: var(--purple-600);
+    padding: u.rem(32) u.rem(24);
+    margin-bottom: u.rem(88);
+
+    .profile-container {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      align-items: center;
+      gap: u.rem(20);
+
+      .profile-pic {
+        border-radius: 50%;
+        border: 2px solid white;
+      }
+
+      .profile-info {
+        .tagline {
+          font-size: u.rem(14);
+          color: var(--navy-200);
+        }
+
+        .username {
+          font-size: u.rem(28);
+          color: var(--navy-200);
+          margin-top: u.rem(4);
+        }
+      }
+    }
+
+    .date-tabs {
+      position: absolute;
+      bottom: u.rem(-64);
+      padding: u.rem(42) u.rem(24) u.rem(24) u.rem(24);
+      left: 0;
+      background: var(--navy-900);
+      z-index: -100;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      border-radius: u.rem(12);
+
+      .tab {
+        font-size: u.rem(15);
+        color: var(--navy-200);
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .title-container,
+  .time-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title-container {
+    .title {
+      font-size: u.rem(14);
+      font-weight: 500;
+    }
+  }
+
+  .time-container {
+    .total-time {
+      font-size: u.rem(28);
+      font-weight: 300;
+    }
+
+    .previous-time {
+      font-size: u.rem(14);
+      font-weight: 400;
+      color: var(--navy-200);
+    }
+  }
+
+  .bg-image-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
+    background: red;
+    width: 100%;
+    left: 0;
+    top: -32px;
+    border-radius: u.rem(12);
+    z-index: -100;
+    overflow: hidden;
+
+    img {
+      height: u.rem(58);
+      margin-right: u.rem(16);
+      margin-top: u.rem(-8);
+    }
+
+    &.work {
+      background: var(--orange-300);
+    }
+    &.play {
+      background: var(--blue-300);
+    }
+    &.study {
+      background: var(--pink-400);
+    }
+    &.exercise {
+      background: var(--green-400);
+    }
+    &.social {
+      background: var(--purple-700);
+    }
+    &.self-care {
+      background: var(--yellow-300);
+    }
+  }
+}
