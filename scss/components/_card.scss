@@ -35,7 +35,7 @@
 
         .username {
           font-size: u.rem(28);
-          color: var(--navy-200);
+          color: var(--gray-100);
           margin-top: u.rem(4);
         }
       }
@@ -55,8 +55,12 @@
 
       .tab {
         font-size: u.rem(15);
-        color: var(--navy-200);
+        color: var(--gray-100);
         opacity: 0.6;
+
+        &.active-tab {
+          opacity: 1;
+        }
       }
     }
   }
