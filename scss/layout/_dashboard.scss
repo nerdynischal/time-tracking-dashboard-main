@@ -1,4 +1,32 @@
+@use "../utilities" as u;
+
 .dashboard-container {
   display: grid;
   grid-template-columns: auto;
+  gap: u.rem(12);
+
+  @include u.breakpoint(medium) {
+    grid-template-columns: 1fr 3fr;
+    gap: u.rem(24);
+    max-width: 80vw;
+  }
+}
+
+.col {
+  @include u.breakpoint(medium) {
+    display: grid;
+    grid-template-rows: auto;
+    gap: u.rem(32);
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto;
+  gap: u.rem(12);
+
+  @include u.breakpoint(medium) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: u.rem(24);
+  }
 }

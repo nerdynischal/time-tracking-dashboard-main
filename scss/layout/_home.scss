@@ -3,4 +3,11 @@
 body {
   padding: u.rem(64) u.rem(20);
   background: var(--navy-950);
+
+  @include u.breakpoint(medium) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 }
