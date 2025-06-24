@@ -86,21 +86,6 @@
         gap: u.rem(12);
         bottom: u.rem(28);
       }
-
-      .tab {
-        font-size: u.rem(15);
-        color: var(--gray-100);
-        opacity: 0.6;
-        cursor: pointer;
-
-        &.active-tab {
-          opacity: 1;
-        }
-
-        &:hover {
-          opacity: 1;
-        }
-      }
     }
   }
 
