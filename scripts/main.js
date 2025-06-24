@@ -17,9 +17,9 @@ function setPrefix(timeFrame) {
   if (timeFrame === "daily") {
     return "Yesterday";
   } else if (timeFrame === "weekly") {
-    return "Last week";
+    return "Last Week";
   } else if (timeFrame === "monthly") {
-    return "Last month";
+    return "Last Month";
   }
 }
 
