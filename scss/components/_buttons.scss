@@ -1,1 +1,19 @@
 @use "../utilities" as u;
+
+.date-btn {
+  font-size: u.rem(15);
+  color: var(--gray-100);
+  background: none;
+  border: none;
+  text-align: left;
+  opacity: 0.6;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.active {
+    opacity: 1;
+  }
+}

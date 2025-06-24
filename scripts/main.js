@@ -1,23 +1,43 @@
-let isWeekly = true;
-let isDaily = false;
-let isMonthly = false;
+const buttons = document.querySelectorAll(".date-btn");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    buttons.forEach((button) => {
+      button.classList.remove("active");
+    });
+
+    button.classList.toggle("active");
+    console.log(button.value);
+    renderActivityTimes(button.value);
+  });
+});
 
 const mainGrid = document.querySelector(".main-grid");
 
-fetch("data.json")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data); // For debugging
-    data.forEach((activity) => {
-      console.log(activity);
-      const cleanActivity = activity.title.toLowerCase().replace(" ", "-");
-      console.log(cleanActivity);
-      let newHTML = `
+function setPrefix(timeFrame) {
+  if (timeFrame === "daily") {
+    return "Yesterday";
+  } else if (timeFrame === "weekly") {
+    return "Last week";
+  } else if (timeFrame === "monthly") {
+    return "Last month";
+  }
+}
+
+function renderActivityTimes(timeFrame) {
+  mainGrid.innerHTML = "";
+
+  fetch("data.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      data.forEach((activity) => {
+        const cleanActivity = activity.title.toLowerCase().replace(" ", "-");
+        let newHTML = `
       <div class="card">
               <div class="bg-image-container ${cleanActivity}">
                 <img src="images/icon-${cleanActivity}.svg" alt="${cleanActivity} icon" />
@@ -29,14 +49,22 @@ fetch("data.json")
                 </div>
               </div>
               <div class="time-container">
-                <div class="total-time">${activity.timeframes.weekly["current"]}hrs</div>
-                <div class="previous-time">Last Week - ${activity.timeframes.weekly["previous"]}hrs</div>
+                <div class="total-time">${
+                  activity.timeframes[timeFrame]["current"]
+                }hrs</div>
+                <div class="previous-time">${setPrefix(timeFrame)} - ${
+          activity.timeframes[timeFrame]["previous"]
+        }hrs</div>
               </div>
             </div>
       `;
-      mainGrid.innerHTML += newHTML;
+        mainGrid.innerHTML += newHTML;
+      });
+    })
+    .catch((error) => {
+      console.error("Error loading the JSON file:", error);
     });
-  })
-  .catch((error) => {
-    console.error("Error loading the JSON file:", error);
-  });
+}
+
+renderActivityTimes("weekly");
+buttons[1].classList.add("active");
