@@ -6,7 +6,7 @@
   margin: u.rem(28) 0;
   gap: u.rem(8);
   background: var(--navy-900);
-  color: #ebebeb;
+  color: var(--gray-50);
   padding: u.rem(24);
   border-radius: u.rem(12);
   position: relative;
@@ -30,7 +30,7 @@
     }
     @include u.breakpoint(medium) {
       margin: 0;
-      margin-top: -4px;
+      margin-top: u.rem(-4);
       border-radius: u.rem(12);
       min-height: u.rem(400);
     }

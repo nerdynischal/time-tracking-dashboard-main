@@ -1,14 +1,16 @@
 const buttons = document.querySelectorAll(".date-btn");
 const mainGrid = document.querySelector(".main-grid");
 
+function removeActiveClass() {
+  buttons.forEach((button) => {
+    button.classList.remove("active");
+  });
+}
+
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    buttons.forEach((button) => {
-      button.classList.remove("active");
-    });
-
+    removeActiveClass();
     button.classList.add("active");
-    console.log(button.value);
     renderActivityTimes(button.value);
   });
 });
@@ -45,7 +47,7 @@ function renderActivityTimes(timeFrame) {
         const cleanActivity = activity.title.toLowerCase().replace(" ", "-");
         const currentTime = activity.timeframes[timeFrame]["current"];
         const previousTime = activity.timeframes[timeFrame]["previous"];
-        let newHTML = `
+        const newHTML = `
       <div class="card">
               <div class="bg-image-container ${cleanActivity}">
                 <img src="images/icon-${cleanActivity}.svg" alt="${cleanActivity} icon" />
